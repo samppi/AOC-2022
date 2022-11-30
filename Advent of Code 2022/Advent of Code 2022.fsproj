@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>Advent_of_Code_2022</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="Utils.fsx" />
+		
+		<Compile Include="01-jotain.fsx" />
+
+
+		<Content Include="input\01-jotain.txt" />
+		<Compile Include="Program.fs" />
+	</ItemGroup>
+
+	<ItemGroup />
+
+</Project>
