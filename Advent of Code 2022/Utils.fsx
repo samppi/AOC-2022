@@ -39,19 +39,21 @@ module Matrix =
     let getElement (matrix: seq<seq<'T>>) (row: int) (col: int) =
         matrix |> Seq.item row |> Seq.item col
 
-
-    
-
-
 open System.IO
 
 let getInputPath filename = 
-    Path.Combine("C:\\hobby\\advent-of-code-2022\\Advent of Code 2022\\input", filename)
+    Path.Combine("C:\\hobby\\AOC-2022\\Advent of Code 2022\\input", filename)
+    
 
 module IO = 
+    let readFileAsString (filename: string) =
+        File.ReadAllText(getInputPath filename)
+
     let readLines (filename:string) = seq {
         let filePath = getInputPath filename
         use sr = new StreamReader (filePath)
         while not sr.EndOfStream do
             yield sr.ReadLine ()
     }
+    
+    
