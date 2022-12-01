@@ -2,6 +2,8 @@
 open Utils
 open IO
 
+open System.IO
+
 let rawInput = "1000
 2000
 3000
@@ -17,29 +19,33 @@ let rawInput = "1000
 
 10000"
 
-let splitIntoIntChunks (inputStr:string) (delimiter: string) = 
+let filename = System.IO.Path.Combine("C:\\hobby\\AOC-2022\\Advent of Code 2022\\input", "01-calory-counting.txt")
+
+
+let splitIntoIntChunks (inputStr : string) (delimiter : string) = 
     inputStr.Split delimiter 
     |> Seq.map (fun x -> x.Split "\n") 
     |> Seq.map (fun x -> x |> Seq.map int |> Seq.toList) 
     |> Seq.toList
+    
+let findHighest lst = 
+    lst
+    |> List.map (List.sum)
+    |> List.max
 
+let findTopThreeSum lst = 
+    lst
+    |> List.map (List.sum)
+    |> List.sortDescending
+    |> List.take 3
+    |> List.sum
     
-let findHighest (lst: int list list) = 
-    let calorySums =
-        lst
-        |> List.map (List.sum)
-    
-    calorySums |> List.max
+let input = File.ReadAllText filename
+let chunks = splitIntoIntChunks input "\r\n\r\n"
 
-let findTopThreeSum (lst: int list list) = 
-    let calorySums =
-        lst
-        |> List.map (List.sum)
+findHighest chunks //silver
+findTopThreeSum chunks //gold
     
-    calorySums 
-        |> List.sortDescending
-        |> List.take 3
-        |> List.sum
 
 
  // DEV
@@ -48,10 +54,3 @@ findHighest caloryList
 findTopThreeSum caloryList
 
 
-let input = IO.readFileAsString "01-calory-counting.txt"
-let chunks = splitIntoIntChunks input "\r\n\r\n"
-
-// 1st part
-findHighest chunks
-// 2nd part
-findTopThreeSum chunks
