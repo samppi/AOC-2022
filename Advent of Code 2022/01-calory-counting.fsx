@@ -1,8 +1,4 @@
-﻿#load "Utils.fsx"
-open Utils
-open IO
-
-open System.IO
+﻿open System.IO
 
 let rawInput = "1000
 2000
@@ -20,7 +16,6 @@ let rawInput = "1000
 10000"
 
 let filename = System.IO.Path.Combine("C:\\hobby\\AOC-2022\\Advent of Code 2022\\input", "01-calory-counting.txt")
-
 
 let splitIntoIntChunks (inputStr : string) (delimiter : string) = 
     inputStr.Split delimiter 
@@ -46,11 +41,7 @@ let chunks = splitIntoIntChunks input "\r\n\r\n"
 findHighest chunks //silver
 findTopThreeSum chunks //gold
     
-
-
  // DEV
 let caloryList = splitIntoIntChunks rawInput "\n\n"
 findHighest caloryList
 findTopThreeSum caloryList
-
-
