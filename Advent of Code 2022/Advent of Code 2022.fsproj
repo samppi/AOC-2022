@@ -7,15 +7,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		
 		<Compile Include="Utils.fsx" />
+
+		<None Include="02-rps.fsx" />
 		
 		<Compile Include="01-calory-counting.fsx" />
+		
+		<Content Include="input\02-rps.txt" />
 
 
 		<Content Include="input\01-calory-counting.txt" />
 		<Compile Include="Program.fs" />
 	</ItemGroup>
-
-	<ItemGroup />
 
 </Project>
