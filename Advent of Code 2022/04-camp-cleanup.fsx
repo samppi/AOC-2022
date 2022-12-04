@@ -4,16 +4,13 @@ open Utils
 type AssPair = (int * int) * (int * int)
 
 let intoRangePair (input:seq<string>) =
-    let assignmentToTuple (assignment : string) = 
+    let toTuple (assignment : string) = 
         let res = assignment.Split "-"
         (int res.[0], int res.[1])
 
     input
     |> Seq.map (fun x -> x.Split ",")
-    |> Seq.map (fun x -> x.[0], x.[1])
-    |> Seq.map (
-        fun (a,b) -> (assignmentToTuple  a, assignmentToTuple b)
-    )
+    |> Seq.map (fun x -> toTuple x.[0],toTuple x.[1])
 
 let isWithin nro (rangeStart,rangeEnd) = nro >= rangeStart && nro <= rangeEnd
 
@@ -28,14 +25,13 @@ let overlaps ((fstPair, sndPair) : AssPair) =
     isWithin (fst sndPair) fstPair || 
     isWithin (snd sndPair) fstPair
 
-let countWithCondition condition pairs =
+let countWith condition pairs =
     pairs
     |> Seq.map condition
-    |> Seq.filter (fun x -> x)
+    |> Seq.filter id
     |> Seq.length
 
-let input = IO.readLines "04-tbd.txt"
-let pairs = intoRangePair input
+let pairs = (IO.readLines >> intoRangePair) "04-camp-cleanup.txt"
 
-countWithCondition contains pairs 
-countWithCondition overlaps pairs 
+countWith contains pairs 
+countWith overlaps pairs 
