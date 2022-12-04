@@ -10,18 +10,16 @@
 		
 		<Compile Include="Utils.fsx" />
 		
-		<None Include="03-tbd.fsx" />
-
-		<None Include="02-rps.fsx" />
+		<None Include="04-camp-cleanup.fsx" />		
+		<None Include="03-rucksack-reorganization.fsx" />
+		<None Include="02-rps.fsx" />		
+		<None Include="01-calory-counting.fsx" />
 		
-		<Compile Include="01-calory-counting.fsx" />
-		
-		<Content Include="input\03-tbd.txt" />
-		
+		<Content Include="input\04-camp-cleanup.txt" />		
+		<Content Include="input\03-rucksack-reorganization.txt" />		
 		<Content Include="input\02-rps.txt" />
-
-
 		<Content Include="input\01-calory-counting.txt" />
+		
 		<Compile Include="Program.fs" />
 	</ItemGroup>
 
