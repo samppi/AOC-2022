@@ -10,6 +10,8 @@
 		
 		<Compile Include="Utils.fsx" />
 		
+		<None Include="07-no-space-left-on-device.fsx" />
+		
 		<None Include="06-tuning-trouble.fsx" />
 		
 		<None Include="05-supply-stacks.fsx" />
@@ -18,6 +20,7 @@
 		<None Include="03-rucksack-reorganization.fsx" />
 		<None Include="02-rps.fsx" />		
 		<None Include="01-calory-counting.fsx" />		
+		<Content Include="input\07-no-space-left-on-device.txt" />		
 		<Content Include="input\06-tuning-trouble.txt" />		
 		<Content Include="input\05-supply-stacks.txt" />
 		
