@@ -34,8 +34,7 @@ let getVisibleTrees treeGrid =
     |> List.mapi
         (fun rowIndex row -> 
          row
-         |> List.mapi(fun colIndex _ -> isVisible treeGrid colIndex rowIndex)
-        )
+         |> List.mapi(fun colIndex _ -> isVisible treeGrid colIndex rowIndex))
 
 let rec countUntil lst limit count = 
     match lst with
@@ -73,8 +72,8 @@ let getScenicScores treeGrid =
     treeGrid
     |> List.mapi(
         fun rowIndex row ->
-            row
-            |> List.mapi(fun x _ -> getScenicScore rowIndex x))
+            [0..(List.length row - 1)]
+            |> List.map(getScenicScore rowIndex))
 
 let treeGrid = (IO.readLines >> createTreeGrid) "08-treetop-tree-house.txt"
 
