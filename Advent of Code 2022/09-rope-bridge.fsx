@@ -2,34 +2,24 @@
 #load "Utils.fsx"
 open Utils
 
-type Dir = 
-    | U
-    | R
-    | D
-    | L
 type Pos = (int*int)
 
-let flattenCmd ((c,i): (Dir*int)) = List.init i (fun _ -> c)
+let flattenCmd ((c,i): (Pos*int)) = List.init i (fun _ -> c)
 
-let parseInput (row : string) : Dir list = 
+let parseInput (row : string) : Pos list = 
     let splitInput = row.Split " "
     let dir =
         match Seq.head splitInput[0] with
-        | 'U' -> U
-        | 'R' -> R
-        | 'D' -> D
-        | 'L' -> L
+        | 'U' -> (0,1)
+        | 'R' -> (1,0)
+        | 'D' -> (0,-1)
+        | 'L' -> (-1,0)
         | _ -> failwith "Invalid direction"
 
     flattenCmd (dir, int splitInput[1])
     
-let moveHead (dir: Dir) (pos: Pos) = 
-    let (x,y) = pos
-    match dir with
-    | U -> (x,y+1)
-    | R -> (x+1,y)
-    | D -> (x,y-1)
-    | L -> (x-1,y)
+let moveHead (dir: Pos) (pos: Pos) = 
+    (fst dir + fst pos, snd dir + snd pos)
 
 let sign x =
     if x > 0 then 1
@@ -55,11 +45,11 @@ let followPrevNode (prev: (int * int)) (cur: (int * int)) =
     else
         (cx, cy)  
 
-let collectTailPositions (cmds: Dir List) knotCount =
+let collectTailPositions (cmds: Pos List) knotCount =
     let initialKnots: Pos list =
         [0..(knotCount - 1)] |> List.map (fun _ -> (0,0))
     
-    let rec loop (dirLst: Dir list) (headPos: Pos) (tailKnots: Pos list) (acc: Pos list) = 
+    let rec loop (dirLst: Pos list) (headPos: Pos) (tailKnots: Pos list) (acc: Pos list) = 
         match dirLst with
         | [] -> acc
         | dir::xs ->            
