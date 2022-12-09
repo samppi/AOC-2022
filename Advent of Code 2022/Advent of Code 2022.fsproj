@@ -10,7 +10,7 @@
 		
 		<Compile Include="Utils.fsx" />
 		
-		<None Include="09-tbd.fsx" />
+		<None Include="09-rope-bridge.fsx" />
 		
 		<None Include="08-treetop-tree-house.fsx" />
 		
@@ -24,7 +24,7 @@
 		<None Include="03-rucksack-reorganization.fsx" />
 		<None Include="02-rps.fsx" />		
 		<None Include="01-calory-counting.fsx" />		
-		<Content Include="input\09-tbd.txt" />		
+		<Content Include="input\09-rope-bridge.txt" />		
 		<Content Include="input\08-treetop-tree-house.txt" />		
 		<Content Include="input\07-no-space-left-on-device.txt" />		
 		<Content Include="input\06-tuning-trouble.txt" />		
