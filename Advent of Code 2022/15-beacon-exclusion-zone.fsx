@@ -82,7 +82,7 @@ let getHoleInLine (dList: SensorData list) (yLine:int) =
     
     findHole (fst coordRange)
 
-let findStuff (dList : SensorData list) =
+let findHoleInMatrix (dList : SensorData list) =
     let rec findStuff' (yLine:int) =
         if yLine > snd coordRange then
             None
@@ -101,7 +101,7 @@ let solveSilver data =
 
 
 let solveGold data = 
-    let coord = findStuff data
+    let coord = findHoleInMatrix data
     match coord with
         | None -> printfn "No hole found"
         | Some(x,y) ->    
