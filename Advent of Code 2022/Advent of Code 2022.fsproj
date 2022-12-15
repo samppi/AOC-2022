@@ -7,8 +7,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		
+
 		<Compile Include="Utils.fsx" />
+		
+		<Compile Include="15-beacon-exclusion-zone.fsx" />
+		
+		
+		
+		<Compile Include="14-regolith-reservoir.fsx" />
+		
+		<None Include="13-brute-force.fsx" />
+		
+		<None Include="13-tbd.fsx" />
+		
+		<None Include="12-hill-climbing-algorithm.fsx" />
+		
+		<None Include="11-tbd2.fsx" />
+		
+		<None Include="11-tbd.fsx" />
 		
 		<None Include="10-cathode-ray-tube.fsx" />
 		
@@ -26,6 +42,12 @@
 		<None Include="03-rucksack-reorganization.fsx" />
 		<None Include="02-rps.fsx" />		
 		<None Include="01-calory-counting.fsx" />		
+		<Content Include="input\15-beacon-exclusion-zone.txt" />		
+		<Content Include="input\14-regolith-reservoir.txt" />		
+		<Content Include="input\13-tbd.txt" />		
+		<Content Include="input\12-hill-climbing-algorithm.txt" />		
+		<Content Include="input\11-tbd-test.txt" />		
+		<Content Include="input\11-tbd.txt" />		
 		<Content Include="input\10-cathode-ray-tube.txt" />		
 		<Content Include="input\09-rope-bridge.txt" />		
 		<Content Include="input\08-treetop-tree-house.txt" />		

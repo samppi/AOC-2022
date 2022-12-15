@@ -26,18 +26,46 @@
     let printSeq (seq: seq<string>) =
         seq
         |> Seq.iter (fun x -> printfn "%s" x)
- 
+    let rec last items =
+        match items with
+        | [] -> failwith "Empty list"
+        | [x] -> x
+        | x::xs -> last xs
+
+    let trim (x : string) =
+        x.Trim()
     
 module Matrix =
     // get matrix size
-    let getSize (matrix: seq<seq<'T>>) =
-        let rows = matrix |> Seq.length
-        let cols = matrix |> Seq.head |> Seq.length
+    let getSize (matrix: 'T list list) =
+        let rows = matrix |> List.length
+        let cols = matrix |> List.head |> List.length
         (rows, cols)
 
     // get matrix element
-    let getElement (matrix: seq<seq<'T>>) (row: int) (col: int) =
-        matrix |> Seq.item row |> Seq.item col
+    let getElement (matrix: 'T list list) ((row,col): (int*int))  =
+        matrix |> List.item row |> List.item col
+    
+    // get adjacent neighbours
+    let getAdjacentNeighbours (matrix: 'T list list) ((row,col): int*int) =
+        let rows, cols = getSize matrix
+        let neighbours = [
+            (row - 1, col - 1); (row - 1, col); (row - 1, col + 1);
+            (row, col - 1); (row, col + 1);
+            (row + 1, col - 1); (row + 1, col); (row + 1, col + 1)
+        ]
+        neighbours
+        |> List.filter (fun (r, c) -> r >= 0 && r < rows && c >= 0 && c < cols)
+    
+    let getDirectNeighbours (matrix: 'T list list) ((row,col): int*int) =
+        let rows, cols = getSize matrix
+        let neighbours = [
+            (row - 1, col);
+            (row, col - 1); (row, col + 1);
+            (row + 1, col);
+        ]
+        neighbours
+        |> List.filter (fun (r, c) -> r >= 0 && r < rows && c >= 0 && c < cols)
 
 open System.IO
 
