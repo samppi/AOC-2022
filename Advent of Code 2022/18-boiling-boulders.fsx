@@ -92,7 +92,7 @@ let droplets: Cube array =
             match x.Split "," |> Array.map int with
             | [|x;y;z|] -> (x,y,z)
             | _ -> failwith "Invalid input")
-#time
+
 let pockets = findAir droplets
 
 let totalSurface = countTheSurfaceArea droplets
